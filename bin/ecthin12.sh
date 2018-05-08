@@ -5,6 +5,7 @@ export Here_PATH=/home/WORK/ecthin
 export rawdata_PATH=${Here_PATH}/rawdata
 export PATH=$PATH:${Here_PATH}/bin
 echo $PATH
+#  bbbbbbbbbbbbbbbbbbb
 #ÈÕÆÚ¼ÆËã
 today=`date -d "today"  +%d`
 today_mmdd=`date -d "today"  +%m%d`
