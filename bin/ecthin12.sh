@@ -11,6 +11,7 @@ today=`date -d "today"  +%d`
 today_mmdd=`date -d "today"  +%m%d`
 today_yymmdd=`date -d "today"  +%y%m%d`
 today_yyyymmdd=`date -d "today"  +%Y%m%d`
+#dddddddddddddddddddddd
 echo 今天是：${today}日${today_yyyymmdd}
 yesterday=`date -d "yesterday"  +%d`
 yesterday_mmdd=`date -d "yesterday"  +%m%d`
