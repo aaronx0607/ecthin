@@ -1,4 +1,5 @@
 #!/bin/bash
+#¿¿¿¿ aaaaaaaaaaaaa
 echo $PATH
 export Here_PATH=/home/WORK/ecthin
 export rawdata_PATH=${Here_PATH}/rawdata
