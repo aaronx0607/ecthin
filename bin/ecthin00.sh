@@ -1,25 +1,25 @@
 #!/bin/bash
 echo $PATH
-export Here_PATH=/home/WORK/ecthin
+export Here_PATH=/ec/ecthin
 export rawdata_PATH=${Here_PATH}/rawdata
 export PATH=$PATH:${Here_PATH}/bin
 echo $PATH
-#ÈÕÆÚ¼ÆËã
+#æ—¥æœŸè®¡ç®—
 today=`date -d "today"  +%d`
 today_mmdd=`date -d "today"  +%m%d`
 today_yymmdd=`date -d "today"  +%y%m%d`
 today_yyyymmdd=`date -d "today"  +%Y%m%d`
-echo ½ñÌìÊÇ£º${today}ÈÕ${today_yyyymmdd}
+echo ä»Šå¤©æ˜¯ï¼š${today}æ—¥${today_yyyymmdd}
 yesterday=`date -d "yesterday"  +%d`
 yesterday_mmdd=`date -d "yesterday"  +%m%d`
 yesterday_yymmdd=`date -d "yesterday"  +%y%m%d`
 yesterday_yyyymmdd=`date -d "yesterday"  +%Y%m%d`
-echo ×òÌìÊÇ£º${yesterday}ÈÕ${yesterday_yyyymmdd}
+echo æ˜¨å¤©æ˜¯ï¼š${yesterday}æ—¥${yesterday_yyyymmdd}
 thedaybefor=`date -d " -2 day"  +%d`
 thedaybefor_mmdd=`date -d " -2 day"  +%m%d`
 thedaybefor_yymmdd=`date -d " -2 day"  +%y%m%d`
 thedaybefor_yyyymmdd=`date -d " -2 day"  +%Y%m%d`
-echo Ç°ÌìÊÇ£º${thedaybefor}ÈÕ${thedaybefor_yyyymmdd}
+echo å‰å¤©æ˜¯ï¼š${thedaybefor}æ—¥${thedaybefor_yyyymmdd}
 
 sc='00'
 echo ${sc}
@@ -34,18 +34,18 @@ then
 mmdd=${today_mmdd}
 yyyymmdd=${today_yyyymmdd}
 fi
-echo Ä£Ê½³õÊ¼ÈÕÆÚ£º${yyyymmdd} ${mmdd}
+echo æ¨¡å¼åˆå§‹æ—¥æœŸï¼š${yyyymmdd} ${mmdd}
 
 cd ${rawdata_PATH}
 
-#È¡µ±Ç°ÎÄ¼şÃû
+#å–å½“å‰æ–‡ä»¶å
 current_filename=ECthin_${yyyymmdd}${sc}
 rm -f *
 rm -f ./.listing
 cp ${Here_PATH}/bin/rgbset.gs ${rawdata_PATH}
 cp ${Here_PATH}/bin/cbar.gs ${rawdata_PATH}
 cp ${Here_PATH}/bin/newdate ${rawdata_PATH}
-#0³¡×ÊÁÏ´¦Àí
+#0åœºèµ„æ–™å¤„ç†
 wget -q -nv ftp://getdata:getdata@172.18.73.19//cmacastdata/nafp/ecmf/W_NAFP_C_ECMF_*_P_C1D${mmdd}${sc}00${mmdd}${sc}011.bz2
 bunzip2 W_NAFP_C_ECMF_*_P_C1D${mmdd}${sc}00${mmdd}${sc}011.bz2
 
@@ -82,29 +82,29 @@ j=1
 while(j<5)
 'set lev 'z.j
 'set csmooth on'
-*×ÛºÏÍ¼1_'z.j'HPA Relative humidity % wind Temperature
+*ç»¼åˆå›¾1_'z.j'HPA Relative humidity % wind Temperature
 'set grads off'
 'set grid off'
-*Ïà¶ÔÊª¶È
+*ç›¸å¯¹æ¹¿åº¦
 'set gxout shaded'
 'run rgbset.gs'
 'set clevs 20 30 40 50 60 70 80 90 100'
 'set ccols 0 31 32 33 34 35 36 37 38 39'
 'd Rprs'
 'run cbar.gs'
-*·ç³¡
+*é£åœº
 'set gxout barb'
 'set digsize 0.045'
 'set ccolor 9'
 'set cthick 5'
 'd skip(Uprs,2,2);skip(Vprs,2,2)'
-*ÆøÎÂ
+*æ°”æ¸©
 'set gxout contour'
 'set cint 2'
 'run rgbset.gs'
 'set ccolor 2'
 'd Tprs-273.16'
-*¸ß¶È
+*é«˜åº¦
 'set gxout contour'
 'set cint 2'
 'run rgbset.gs'
@@ -114,7 +114,7 @@ while(j<5)
 'draw title ECthin 'z.j'H.RH.WIND.T ${mmdd}${sc}'
 'draw string 9.0 0.2 ${yyyymmdd}${sc}(CST)'
 'printim ECthin_1_H.RH.WIND.T_'z.j'_${yyyymmdd}${sc}_${mmdd}${sc}.gif gif'
-*×ÛºÏÍ¼2 'z.j'HPA´¹Ö±ËÙ¶È Vertical velocity [Pa s**-1]
+*ç»¼åˆå›¾2 'z.j'HPAå‚ç›´é€Ÿåº¦ Vertical velocity [Pa s**-1]
 'c'
 'set grads off'
 'set grid off'
@@ -131,7 +131,7 @@ while(j<5)
 'draw title   ECthin 'z.j'HPa Vertical velocity [Pa s**-1] ${mmdd}${sc}'
 'draw string 9.0 0.2 ${yyyymmdd}${sc}(CST)'
 'printim ECthin_2_Wprs_'z.j'_${yyyymmdd}${sc}_${mmdd}${sc}.gif gif'
-*×ÛºÏÍ¼3_'z.j'HPa_STREAM
+*ç»¼åˆå›¾3_'z.j'HPa_STREAM
 'c'
 'set grads off'
 'set grid off'
@@ -147,7 +147,7 @@ while(j<5)
 'draw title  ECthin 'z.j'HPA STREAM ${mmdd}${sc}'
 'draw string 9.0 0.2 ${yyyymmdd}${sc}(CST)'
 'printim ECthin_3_STREAM_'z.j'_${yyyymmdd}${sc}_${mmdd}${sc}.gif gif'
-*×ÛºÏÍ¼4_'z.j'HPa_Relative vorticity [K m**2 kg**-1 s**-1 1e-06]
+*ç»¼åˆå›¾4_'z.j'HPa_Relative vorticity [K m**2 kg**-1 s**-1 1e-06]
 'c'
 'set grads off'
 'set grid off'
@@ -165,7 +165,7 @@ while(j<5)
 'draw title  ECthin 'z.j'HPa Relative vorticity ${mmdd}${sc}'
 'draw string 6.0 0.2 [K m**2 kg**-1 s**-1 1e-06]${yyyymmdd}${sc}(CST)'
 'printim ECthin_4_vorticity_'z.j'_${yyyymmdd}${sc}_${mmdd}${sc}.gif gif'
-*×ÛºÏÍ¼5_'z.j'HPa_Divergence[s**-1 1e-5]
+*ç»¼åˆå›¾5_'z.j'HPa_Divergence[s**-1 1e-5]
 'c'
 'set grads off'
 'set grid off'
@@ -183,7 +183,7 @@ while(j<5)
 'draw title  ECthin 'z.j'HPa Divergence ${mmdd}${sc}'
 'draw string 9.0 0.2 [s**-1 1e-5]${yyyymmdd}${sc}(CST)'
 'printim ECthin_5_Divergence_'z.j'_${yyyymmdd}${sc}_${mmdd}${sc}.gif gif'
-*×ÛºÏÍ¼11(profile) 'z.j'HPa Specific humidity kg kg**-1
+*ç»¼åˆå›¾11(profile) 'z.j'HPa Specific humidity kg kg**-1
 'c'
 'set grads off'
 'set grid off'
@@ -215,7 +215,7 @@ cat > ${current_filename}_cst.sfc.gs << EOF
 'set parea 1 7.7 1 10'
 'set lon 108 115'
 'set lat 33 42'
-*×ÛºÏÍ¼7 Temperature at 2M
+*ç»¼åˆå›¾7 Temperature at 2M
 'set grads off'
 'set grid off'
 'run rgbset.gs'
@@ -231,7 +231,7 @@ cat > ${current_filename}_cst.sfc.gs << EOF
 'draw title  ECthin Temperature at 2M ${mmdd}${sc}'
 'draw string 6.0 0.2 ${yyyymmdd}${sc}(CST)'
 'printim ECthin_7_TMP2m_surf_${yyyymmdd}${sc}_${mmdd}${sc}.gif gif'
-*×ÛºÏÍ¼8 surface Total cloud cover [(0 - 1)]
+*ç»¼åˆå›¾8 surface Total cloud cover [(0 - 1)]
 'c'
 'set grads off'
 'set grid off'
@@ -248,7 +248,7 @@ cat > ${current_filename}_cst.sfc.gs << EOF
 'draw title  ECthin surface Total cloud cover ${mmdd}${sc}'
 'draw string 6.0 0.2 ${yyyymmdd}${sc}(CST)'
 'printim ECthin_8_TCCsfc_surf_${yyyymmdd}${sc}_${mmdd}${sc}.gif gif'
-*×ÛºÏÍ¼10_surface Skin temperature [K]
+*ç»¼åˆå›¾10_surface Skin temperature [K]
 'c'
 'set grads off'
 'set grid off'
@@ -265,7 +265,7 @@ cat > ${current_filename}_cst.sfc.gs << EOF
 'draw title  ECthin surface Skin temperature ${mmdd}${sc}'
 'draw string 6.0 0.2 ${yyyymmdd}${sc}(CST)'
 'printim ECthin_10_SKTsfc_surf_${yyyymmdd}${sc}_${mmdd}${sc}.gif gif'
-*×ÛºÏÍ¼12 surface 2 metre dewpoint temperature [K]
+*ç»¼åˆå›¾12 surface 2 metre dewpoint temperature [K]
 'c'
 'set grads off'
 'set grid off'
@@ -282,7 +282,7 @@ cat > ${current_filename}_cst.sfc.gs << EOF
 'draw title  ECthin surface 2m dewpoint temperature ${mmdd}${sc}'
 'draw string 6.0 0.2 ${yyyymmdd}${sc}(CST)'
 'printim ECthin_12_no2Dsfc_surf_${yyyymmdd}${sc}_${mmdd}${sc}.gif gif'
-*×ÛºÏÍ¼6 µØÃæº£Æ½ÃæÆøÑ¹ Mean sea level pressure [Pa]ºÍ10m·ç
+*ç»¼åˆå›¾6 åœ°é¢æµ·å¹³é¢æ°”å‹ Mean sea level pressure [Pa]å’Œ10mé£
 'c'
 'set grads off'
 'set grid off'
@@ -291,7 +291,7 @@ cat > ${current_filename}_cst.sfc.gs << EOF
 'set ccols 71 72 73 74 75 76'
 'set gxout shaded'
 'd mag(no10Usfc,no10Vsfc)'
-*µØÃæPRESSURE
+*åœ°é¢PRESSURE
 'run rgbset.gs'
 'set gxout contour'
 'set cint 2.5'
@@ -323,7 +323,7 @@ cat > ${current_filename}_6_cst.sfc.gs << EOF
 'set parea 0 11 1 7.7'
 'set lon 102 120'
 'set lat 33 43'
-*×ÛºÏÍ¼6 µØÃæº£Æ½ÃæÆøÑ¹ Mean sea level pressure [Pa]ºÍ10m·ç
+*ç»¼åˆå›¾6 åœ°é¢æµ·å¹³é¢æ°”å‹ Mean sea level pressure [Pa]å’Œ10mé£
 'c'
 'set grads off'
 'set grid off'
@@ -332,7 +332,7 @@ cat > ${current_filename}_6_cst.sfc.gs << EOF
 'set ccols 71 72 73 74 75 76'
 'set gxout shaded'
 'd mag(no10Usfc,no10Vsfc)'
-*µØÃæPRESSURE
+*åœ°é¢PRESSURE
 'run rgbset.gs'
 'set gxout contour'
 'set cint 2.5'
@@ -394,7 +394,7 @@ do
 'set lon 108 116'
 'set lat 34 43'
 'set csmooth on' 
-*ÀÛ»ı½µË®Á¿
+*ç´¯ç§¯é™æ°´é‡
 'set grads off'
 'set grid off'
 'set gxout shaded'
@@ -430,7 +430,7 @@ EOF
 		grib2ctl.pl -verf ${current_filename}_${ybsx_mmddhh}.6 > ${current_filename}_${ybsx_mmddhh}.6.ctl
 		gribmap -i ${current_filename}_${ybsx_mmddhh}.6.ctl
 		cat > ${current_filename}_${ybsx_mmddhh}.6.gs << EOF
-*×ÛºÏÍ¼6 µØÃæº£Æ½ÃæÆøÑ¹ Mean sea level pressure [Pa]ºÍ10m·ç
+*ç»¼åˆå›¾6 åœ°é¢æµ·å¹³é¢æ°”å‹ Mean sea level pressure [Pa]å’Œ10mé£
 'reinit'
 'c'
 'open ${current_filename}_${ybsx_mmddhh}.6.ctl'
@@ -448,7 +448,7 @@ EOF
 'set ccols 71 72 73 74 75 76'
 'set gxout shaded'
 'd mag(no10Usfc,no10Vsfc)'
-*µØÃæPRESSURE
+*åœ°é¢PRESSURE
 'run rgbset.gs'
 'set gxout contour'
 'set cint 2.5'
@@ -488,7 +488,7 @@ EOF
 'set parea 1 7.7 1 10'
 'set lon 108 115'
 'set lat 33 42'
-*×ÛºÏÍ¼7 ÄÜ¼û¶È
+*ç»¼åˆå›¾7 èƒ½è§åº¦
 'c'
 'set grads off'
 'set grid off'
@@ -505,7 +505,7 @@ EOF
 'draw title  ECthin VIS ${ybsx_mmddhh}'
 'draw string 6.0 0.2 ${yyyymmdd}${sc}(CST)'
 'printim ECthin_7_VIS_surf_${yyyymmdd}${sc}_${ybsx_mmddhh}.gif gif'
-*×ÛºÏÍ¼8 surface Total cloud cover [(0 - 1)]
+*ç»¼åˆå›¾8 surface Total cloud cover [(0 - 1)]
 'c'
 'set grads off'
 'set grid off'
@@ -522,7 +522,7 @@ EOF
 'draw title  ECthin surface Total cloud cover ${ybsx_mmddhh}'
 'draw string 6.0 0.2 ${yyyymmdd}${sc}(CST)'
 'printim ECthin_8_TCCsfc_surf_${yyyymmdd}${sc}_${ybsx_mmddhh}.gif gif'
-*×ÛºÏÍ¼12 ¹ıÈ¥6Ğ¡Ê±2Ã××î¸ßÎÂ¶È [K]
+*ç»¼åˆå›¾12 è¿‡å»6å°æ—¶2ç±³æœ€é«˜æ¸©åº¦ [K]
 'c'
 'set grads off'
 'set grid off'
@@ -539,7 +539,7 @@ EOF
 'draw title  ECthin 2 metre last 6H MAX temperature ${ybsx_mmddhh}'
 'draw string 6.0 0.2 ${yyyymmdd}${sc}(CST)'
 'printim ECthin_12_MX2T6sfc_surf_${yyyymmdd}${sc}_${ybsx_mmddhh}.gif gif'
-*×ÛºÏÍ¼12 ¹ıÈ¥6Ğ¡Ê±2Ã××îµÍÎÂ¶È [K]
+*ç»¼åˆå›¾12 è¿‡å»6å°æ—¶2ç±³æœ€ä½æ¸©åº¦ [K]
 'c'
 'set grads off'
 'set grid off'
@@ -632,30 +632,30 @@ j=1
 while(j<5)
 'set lev 'z.j
 'set csmooth on'
-*×ÛºÏÍ¼1_'z.j'HPA Relative humidity % wind Temperature
+*ç»¼åˆå›¾1_'z.j'HPA Relative humidity % wind Temperature
 'c'
 'set grads off'
 'set grid off'
-*Ïà¶ÔÊª¶È
+*ç›¸å¯¹æ¹¿åº¦
 'set gxout shaded'
 'run rgbset.gs'
 'set clevs 20 30 40 50 60 70 80 90 100'
 'set ccols 0 31 32 33 34 35 36 37 38 39'
 'd Rprs'
 'run cbar.gs'
-*·ç³¡
+*é£åœº
 'set gxout barb'
 'set digsize 0.045'
 'set ccolor 9'
 'set cthick 5'
 'd skip(Uprs,2,2);skip(Vprs,2,2)'
-*ÆøÎÂ
+*æ°”æ¸©
 'set gxout contour'
 'set cint 2'
 'run rgbset.gs'
 'set ccolor 2'
 'd Tprs-273.16'
-*¸ß¶È
+*é«˜åº¦
 'set gxout contour'
 'set cint 2'
 'run rgbset.gs'
@@ -665,7 +665,7 @@ while(j<5)
 'draw title ECthin 'z.j'H.RH.WIND.T 'month day hour
 'draw string 9.0 0.2 ${yyyymmdd}${sc}(CST)'
 'printim ECthin_1_H.RH.WIND.T_'z.j'_${yyyymmdd}${sc}_'month day hour'.gif gif'
-*×ÛºÏÍ¼2 'z.j'HPA´¹Ö±ËÙ¶È Vertical velocity [Pa s**-1]
+*ç»¼åˆå›¾2 'z.j'HPAå‚ç›´é€Ÿåº¦ Vertical velocity [Pa s**-1]
 'c'
 'set grads off'
 'set grid off'
@@ -682,7 +682,7 @@ while(j<5)
 'draw title   ECthin 'z.j'HPa Vertical velocity [Pa s**-1] 'month day hour
 'draw string 9.0 0.2 ${yyyymmdd}${sc}(CST)'
 'printim ECthin_2_Wprs_'z.j'_${yyyymmdd}${sc}_'month day hour'.gif gif'
-*×ÛºÏÍ¼3_'z.j'HPa_STREAM
+*ç»¼åˆå›¾3_'z.j'HPa_STREAM
 'c'
 'set grads off'
 'set grid off'
@@ -698,7 +698,7 @@ while(j<5)
 'draw title  ECthin 'z.j'HPA STREAM 'month day hour
 'draw string 9.0 0.2 ${yyyymmdd}${sc}(CST)'
 'printim ECthin_3_STREAM_'z.j'_${yyyymmdd}${sc}_'month day hour'.gif gif'
-*×ÛºÏÍ¼4_'z.j'HPa_Relative vorticity [K m**2 kg**-1 s**-1 1e-06]
+*ç»¼åˆå›¾4_'z.j'HPa_Relative vorticity [K m**2 kg**-1 s**-1 1e-06]
 'c'
 'set grads off'
 'set grid off'
@@ -716,7 +716,7 @@ while(j<5)
 'draw title  ECthin 'z.j'HPa Relative vorticity 'month day hour
 'draw string 6.0 0.2 [K m**2 kg**-1 s**-1 1e-06]${yyyymmdd}${sc}(CST)'
 'printim ECthin_4_vorticity_'z.j'_${yyyymmdd}${sc}_'month day hour'.gif gif'
-*×ÛºÏÍ¼5_'z.j'HPa_Divergence[s**-1 1e-5]
+*ç»¼åˆå›¾5_'z.j'HPa_Divergence[s**-1 1e-5]
 'c'
 'set grads off'
 'set grid off'
@@ -734,7 +734,7 @@ while(j<5)
 'draw title  ECthin 'z.j'HPa Divergence 'month day hour
 'draw string 9.0 0.2 [s**-1 1e-5]${yyyymmdd}${sc}(CST)'
 'printim ECthin_5_Divergence_'z.j'_${yyyymmdd}${sc}_'month day hour'.gif gif'
-*×ÛºÏÍ¼11(profile) 'z.j'HPa Specific humidity kg kg**-1
+*ç»¼åˆå›¾11(profile) 'z.j'HPa Specific humidity kg kg**-1
 'c'
 'set grads off'
 'set grid off'
@@ -759,14 +759,14 @@ endwhile
 'quit'
 EOF
 grads -lbc "${current_filename}.high.gs"
-#24Ğ¡Ê±½µË®¡¢24Ğ¡Ê±±äÎÂ
+#24å°æ—¶é™æ°´ã€24å°æ—¶å˜æ¸©
  declare i ltime ctime
  echo 24H Rain dT
  for i in {1..9}
  do
 	let ltime=($i-1)*24+12
 	let ctime=$i*24+12
-#È¡Ç°24Ğ¡Ê±ÎÄ¼şÃû
+#å–å‰24å°æ—¶æ–‡ä»¶å
 	last_yyyymmddhh=`/home/WORK/ecthin/etc/newdate ${yyyymmdd}${sc} +$ltime`
 	echo "last_yyyymmddhh="${last_yyyymmddhh}
 	last_mmddhh=${last_yyyymmddhh:4:6}
@@ -794,7 +794,7 @@ grads -lbc "${current_filename}.high.gs"
 'set lon 108 116'
 'set lat 34 43'
 'set csmooth on' 
-*24Ğ¡Ê±½µË®Á¿
+*24å°æ—¶é™æ°´é‡
 'c'
 'set grads off'
 'set grid off'
@@ -821,7 +821,7 @@ grads -lbc "${current_filename}.high.gs"
 'draw title   ECthin 24H rain ${last_mmddhh}-${present_mmddhh}'
 'draw string 6.0 0.2 ${yyyymmdd}${sc}(CST)'
 'printim ECthin_9_24rain_${yyyymmdd}${sc}_${present_mmddhh}.gif gif'
-*µØÃæ2metre 24Ğ¡Ê±±äÎÂ surface 2 metre temperature
+*åœ°é¢2metre 24å°æ—¶å˜æ¸© surface 2 metre temperature
 'c'
 'set grads off'
 'set grid off'
@@ -851,7 +851,7 @@ EOF
  do
 	let ltime=($i-1)*12
 	let ctime=$i*12
-#È¡Ç°24Ğ¡Ê±ÎÄ¼şÃû
+#å–å‰24å°æ—¶æ–‡ä»¶å
 	last_yyyymmddhh=`/home/WORK/ecthin/etc/newdate ${yyyymmdd}${sc} +$ltime`
 	echo "last_yyyymmddhh="${last_yyyymmddhh}
 	last_mmddhh=${last_yyyymmddhh:4:6}
@@ -879,7 +879,7 @@ EOF
 'set lon 108 116'
 'set lat 34 43'
 'set csmooth on' 
-*12Ğ¡Ê±½µË®Á¿
+*12å°æ—¶é™æ°´é‡
 'c'
 'set grads off'
 'set grid off'
@@ -912,7 +912,7 @@ EOF
 		grads -pbc "${present_filename}_12R.gs"
 	fi			 
  done
-#¶¯»­»æÍ¼
+#åŠ¨ç”»ç»˜å›¾
 for lev in 850 700 500 200
 do
 	convert -loop 50 -delay 50 ECthin_1_H.RH.WIND.T_${lev}_${yyyymmdd}${sc}*.gif ECthin_1_H.RH.WIND.T_${lev}_${yyyymmdd}${sc}.gif
